@@ -1,0 +1,32 @@
+<div class="container p-4">
+    {{#if genres}}
+    <a href="/genres/add" class="btn btn-success">Agregar Nuevo Género</a>
+    <br>
+    <br>
+    <div class="row">
+        {{#each genres}}
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h1>{{genre}}</h1>
+                    <h5>{{mini_desc}}</h5>
+                    <p>Cantidad de películas: {{cantMovies}}</p>
+                    <a href="/genres/see/{{id}}" class="btn btn-info" role="button">VER</a>
+                    <a href="/genres/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
+                    <a href="/genres/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p> No hay géneros guardados aún </p>
+                <a href="/genres/add" class="btn btn-success"> ¡Guarda uno! </a>
+            </div>
+        </div>
+
+        {{/if}}
+    </div>
+</div>

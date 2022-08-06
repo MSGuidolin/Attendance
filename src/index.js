@@ -27,7 +27,7 @@ app.set('view engine', '.hbs');
 
 // middleware
 app.use(session({
-    secret: 'linksnodesession',
+    secret: 'moviesnodesession',
     resave: false,
     saveUninitialized: false,
     store: new MySQLStore(database),
@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+app.disable('etag');
 
 
 //global variables
@@ -51,7 +52,9 @@ app.use((req, res, next) => {
 //routes
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
-app.use('/links', require('./routes/links'));
+app.use('/genres', require('./routes/genres'));
+app.use('/movies', require('./routes/movies'));
+app.use('/profile', require('./routes/profile'));
 
 //public
 app.use(express.static(path.join(__dirname, 'public')));

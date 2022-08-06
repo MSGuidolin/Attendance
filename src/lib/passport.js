@@ -50,4 +50,5 @@ passport.use('local.signin', new LocalStrategy({
   } else {
     return done(null, false, req.flash('message', 'El nombre de usuario no existe'));
   }
+
 }));

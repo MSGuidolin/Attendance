@@ -1,0 +1,44 @@
+<div class="container p-4">
+
+    <div class="card text-center p-4">
+        <h4>{{genre.genre}}</h4>
+        {{genre.description}}
+    </div>
+    <br>
+    {{#if movies}}
+    <div class="row mx-auto justify-content-around">
+
+        <a href="/movies/add" class="btn btn-success">Agregar Nueva Película</a>
+        <a href="/genres" class="btn btn-primary">Ver todos los géneros</a>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        {{#each movies}}
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h1>{{title}}</h1>
+                    <h5>Director: {{director}}</h5>
+
+                    <p class="createdat"> {{timeago created_at}} </p>
+                    <a href="/movies/see/{{id}}" class="btn btn-info" role="button">VER</a>
+                    <a href="/movies/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
+                    <a href="/movies/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a>
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+    {{else}}
+    <div class="col-md-4 mx-auto">
+        <div class="card card-body text-center">
+            <p> No hay películas de éste género guardadas aún </p>
+            <a href="/movies/add" class="btn btn-success"> ¡Guarda una! </a>
+        </div>
+    </div>
+    {{/if}}
+</div>
