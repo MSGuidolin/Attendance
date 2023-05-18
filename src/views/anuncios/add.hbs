@@ -1,0 +1,34 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form action="/anuncios/add" method="POST">
+                <div class="form-group">
+                    <label for="titulo">Anuncio:</label>
+                    <input type="text" name="titulo" class="form-control" placeholder="Titulo"
+                        autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" name="tipo" class="form-control" placeholder="Tipo" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="curso">Curso:</label>
+                    <input type="text" name="curso" class="form-control" placeholder="Curso" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea name="descripcion" rows="2" class="form-control"
+                        placeholder="Descripción" required></textarea>
+                </div>
+                
+                <button class="btn btn-success btn-block">
+                    GUARDAR
+                </button>
+                <br>
+                <div>
+                    <a class="btn btn-secondary btn-block" href="/anuncios" role="button">VOLVER SIN GUARDAR</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

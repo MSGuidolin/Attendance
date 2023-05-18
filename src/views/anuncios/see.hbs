@@ -1,0 +1,28 @@
+<div class="container p-4">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form action="/anuncios/see/{{anuncio.idAnuncio}}" method="GET">
+                    <div class="form-group text-center">
+                        <h4>{{anuncio.titulo}}</h4>
+                    </div>
+                    <div class="form-group">
+                        Tipo de anuncio: {{anuncio.tipo}}
+                    </div>
+                    <div class="form-group">
+                        Profesor: {{anuncio.profesor}}
+                    </div>
+                    <div class="form-group">
+                        {{anuncio.descripcion}}
+                    </div>
+                    <div class="form-group">
+                        {{anuncio.created_at}}
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                        <a href="/anuncios" class="btn btn-primary" role="button">VOLVER</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

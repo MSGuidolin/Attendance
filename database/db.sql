@@ -235,14 +235,20 @@ SELECT * from presentes;
 
 INSERT INTO usuarios VALUES
     (1, 39767395, 'Marcos', 'Guidolin', 'España 650', '2616181199', '39767395', 'Alumno'),
-    (2, 20307505, 'Martín', 'Gomez', 'Italia 650', '2616774852', '20307505', 'Profesor');
+    (2, 20307505, 'Martín', 'Gomez', 'Italia 650', '2616774852', '20307505', 'Profesor'),
     (3, 20397682, 'Adriana', 'Lopez', 'Corrientes 60', '26165148795', '20397682', 'Profesor');
 
 SELECT * from usuarios;
 
+INSERT INTO usuarios VALUES
+    (3, 20397682, 'Adriana', 'Lopez', 'Corrientes 60', '26165148795', '20397682', 'Profesor');
+
 
 INSERT INTO libros VALUES
-    (1, 'Grammar For Use 4', 'Cambridge', 2020, 12).
+    (1, 'Grammar For Use 4', 'Cambridge', 2020, 12),
+    (2, 'Grammar For Use 2', 'Cambridge', 2010, 10);
+
+INSERT INTO libros VALUES
     (2, 'Grammar For Use 2', 'Cambridge', 2010, 10);
 
 SELECT * from libros;
@@ -252,6 +258,9 @@ INSERT INTO cursos VALUES
     (1, 'Adultos Avanzado', 203000, 2023, 'B1', 2, 2, 1),
     (2, 'Niños Intermedio', 180000, 2023, 'A1', 2, 3, 2);
 
+INSERT INTO cursos VALUES 
+    (2, 'Niños Intermedio', 180000, 2023, 'A1', 2, 3, 2);
+
 SELECT * from cursos;
 
 
@@ -259,6 +268,9 @@ INSERT INTO anuncios (id, titulo, descripcion, curso, profesor, tipo)
 VALUES 
     (1, 'Fecha examen Final', 'Hemos acordado que el examen final sea el viernes 24/8', 1, 2, 1),
     (2, 'Clases suspendidas 18/5', 'Debido a los cortes de agua, se suspenden las clases del día de mañana', 2, 3, 2);
+
+INSERT INTO anuncios (id, titulo, descripcion, curso, profesor, tipo)
+VALUES (2, 'Clases suspendidas 18/5', 'Debido a los cortes de agua, se suspenden las clases del día de mañana', 2, 3, 2);
 
 SELECT * from anuncios;
 
@@ -290,6 +302,9 @@ JOIN libros AS L ON L.id = Q.libro;
 INSERT INTO cursosdias VALUES
     (1, 1),
     (3, 1);
+
+INSERT INTO cursosdias VALUES
+     (3, 1);
 
 SELECT C.nombre, C.horario, C.anio, C.nivel, D.dia
 FROM cursos C, dias D, cursosdias E
