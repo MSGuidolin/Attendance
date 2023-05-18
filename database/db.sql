@@ -64,7 +64,7 @@ CREATE TABLE usuarios (
     apellido VARCHAR(45) NOT NULL,
     direccion VARCHAR(45) NOT NULL,
     telefono VARCHAR(45),
-    contraseña VARCHAR(45) NOT NULL,
+    contraseña VARCHAR(70) NOT NULL,
     rol VARCHAR(45) NOT NULL,
     CONSTRAINT fk_rol FOREIGN KEY(rol) REFERENCES roles(rol),
     PRIMARY KEY (id)
@@ -235,14 +235,15 @@ SELECT * from presentes;
 
 INSERT INTO usuarios VALUES
     (1, 39767395, 'Marcos', 'Guidolin', 'España 650', '2616181199', '39767395', 'Alumno'),
-    (2, 20307505, 'Martín', 'Gomez', 'Italia 650', '2616774852', '20307505', 'Profesor');
-    (3, 20397682, 'Adriana', 'Lopez', 'Corrientes 60', '26165148795', '20397682', 'Profesor');
+    (2, 20307505, 'Martín', 'Gomez', 'Italia 650', '2616774852', '20307505', 'Profesor'),
+    (3, 20397682, 'Adriana', 'Lopez', 'Corrientes 60', '26165148795', '20397682', 'Profesor'),
+    (4, 33666999, 'Daniel', 'Gomez', 'Italia 50', '2616447758', '33666999', 'Alumno');
 
 SELECT * from usuarios;
 
 
 INSERT INTO libros VALUES
-    (1, 'Grammar For Use 4', 'Cambridge', 2020, 12).
+    (1, 'Grammar For Use 4', 'Cambridge', 2020, 12),
     (2, 'Grammar For Use 2', 'Cambridge', 2010, 10);
 
 SELECT * from libros;
@@ -264,13 +265,15 @@ SELECT * from anuncios;
 
 
 INSERT INTO asistenciaCursos VALUES
-    (1, 1, 1, 0, 2, 2);
+    (1, 1, 1, 0, 2, 2),
+    (2, 4, 1, 2, 0, 1);
 
 SELECT * from asistenciaCursos;
 
 
 INSERT INTO listaAlumnos VALUES
-    (1, 1, 1);
+    (1, 1, 1),
+    (4, 4, 1);
 
 SELECT U.nombre, U.apellido, C.nombre AS curso
 FROM  usuarios U, cursos C, listaALumnos L 
