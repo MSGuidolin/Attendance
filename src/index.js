@@ -52,8 +52,8 @@ app.use((req, res, next) => {
 //routes
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
-app.use('/genres', require('./routes/genres'));
-app.use('/movies', require('./routes/movies'));
+// app.use('/genres', require('./routes/genres'));
+// app.use('/movies', require('./routes/movies'));
 app.use('/profile', require('./routes/profile'));
 
 //public

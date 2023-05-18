@@ -5,20 +5,8 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <h3>
-                            Bienvenido, {{user.full_name}}
+                            Bienvenido, {{user.nombre}} {{user.apellido}}
                         </h3>
-                        Nombre de Usuario: {{user.username}}
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col card border-0 text-center">
-                                <a href="/movies" class="btn btn-block btn-primary">Películas guardadas: {{cantMovies.cantMovies}}</a>
-
-                            </div>
-                            <div class="col card border-0 text-center">
-                                <a href="/genres" class="btn btn-block btn-primary">Géneros guardados: {{cantGenres.cantGenres}}</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

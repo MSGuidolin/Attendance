@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const { isLoggedIn, isNotLoggedIn } = require('../lib/auth')
+const { isNotLoggedIn } = require('../lib/auth')
 
 router.get('/signup', isNotLoggedIn, (req, res) => {
     res.render('auth/signup');
@@ -23,7 +23,8 @@ router.post('/signin', (req, res, next) => {
         failureRedirect: '/signin',
         failureFlash: true,
     })(req, res, next);
-})
+});
+
 
 router.get('/logout', (req, res) => {
     req.logout(function (err) {

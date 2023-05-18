@@ -8,13 +8,27 @@
                 <div class="card-body">
                     <form action="/signup" method="POST">
                         <div class="form-group">
-                            <input type="text" name="full_name" placeholder="Nombre Completo" class="form-control" autofocus required>
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus
+                                required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="username" placeholder="Nombre de usuario" class="form-control" required>
+                            <input type="text" name="apellido" placeholder="Apellido" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" placeholder="Contraseña" class="form-control" required>
+                            <input type="number" name="dni" placeholder="DNI" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="direccion" placeholder="Dirección" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="telefono" placeholder="Teléfono" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="contraseña" placeholder="Contraseña" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="rol" placeholder="Rol" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block"> REGISTRARSE </button>

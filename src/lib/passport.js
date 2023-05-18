@@ -6,20 +6,24 @@ const helpers = require('../lib/helpers');
 
 
 passport.use('local.signup', new LocalStrategy({
-  usernameField: 'username',
-  passwordField: 'password',
+  usernameField: 'dni',
+  passwordField: 'contraseña',
   passReqToCallback: true
-}, async (req, username, password, done) => {
+}, async (req, dni, contraseña, done) => {
 
-  const { full_name } = req.body;
+  const { nombre, apellido, direccion, telefono, rol } = req.body;
 
   const newUser = {
-    username,
-    password,
-    full_name
+    nombre, 
+    dni,
+    apellido, 
+    direccion, 
+    telefono, 
+    rol,
+    contraseña
   };
-  newUser.password = await helpers.encryptPassword(password);
-  const result = await pool.query('INSERT INTO users SET ?', newUser);
+  newUser.contraseña = await helpers.encryptPassword(contraseña);
+  const result = await pool.query('INSERT INTO usuarios SET ?', newUser);
   newUser.id = result.insertId;
   return done(null, newUser);
 }));
@@ -29,26 +33,28 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const rows = await pool.query('SELECT * FROM users WHERE id = ?', [id]);
+  const rows = await pool.query('SELECT * FROM usuarios WHERE id = ?', [id]);
   done(null, rows[0]);
 })
 
+
+
 passport.use('local.signin', new LocalStrategy({
-  usernameField: 'username',
-  passwordField: 'password',
+  usernameField: 'dni',
+  passwordField: 'contraseña',
   passReqToCallback: true
-}, async (req, username, password, done) => {
-  const rows = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+}, async (req, dni, contraseña, done) => {
+  const rows = await pool.query('SELECT * FROM usuarios WHERE dni = ?', [dni]);
   if (rows.length > 0) {
     const user = rows[0];
-    const validPassword = await helpers.matchPassword(password, user.password)
+    const validPassword = await helpers.matchPassword(contraseña, user.contraseña)
     if (validPassword) {
-      done(null, user, req.flash('success', 'Bienvenido ' + user.username));
+      done(null, user, req.flash('success', 'Bienvenido ' + user.nombre + user.apellido));
     } else {
       done(null, false, req.flash('message', 'Contraseña incorrecta'));
     }
   } else {
-    return done(null, false, req.flash('message', 'El nombre de usuario no existe'));
+    return done(null, false, req.flash('message', 'Usuario inválido'));
   }
 
 }));
