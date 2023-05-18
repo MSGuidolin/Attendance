@@ -17,7 +17,8 @@ module.exports = {
         return (req, res, next) => {
           if (req.user.rol !== rol) {
             res.status(401)
-            return res.send('Not allowed')
+            return req.flash('message', 'Acceso denegado'),
+            res.redirect('/')
           }
       
           next()

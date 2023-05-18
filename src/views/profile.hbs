@@ -1,15 +1,82 @@
-<div class="container p-4">
-    <div class="container p-4">
+<div class="content wrapper">
+    <section class="content">
         <div class="row">
-            <div class="col-md-9 mx-auto">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h3>
-                            Bienvenido, {{user.nombre}} {{user.apellido}}
-                        </h3>
+            <div class="col-md-3">
+                <div class="box">
+                    <div class="box-header text-center">
+                        <h3>DATOS PERSONALES</h3>
+                        <div class="card-body text-center">
+                            <img src="" alt="" class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5>Nombre completo: {{user.nombre}} {{user.apellido}}</h5>
+                            <h5>DNI: {{user.dni}}</h5>
+                            <h5>Dirección: {{user.direccion}}</h5>
+                            <h5>Teléfono: {{user.telefono}}</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            {{#if profesor}}
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <div class="row" style="padding-left:15px padding-right:5px">
+                                    <h3>PROFESOR</h3>
+                                </div>
+                            </div>
+                            {{#each cursos}}
+                            <div class="row" style="padding-left:15px padding-right:5px">
+                                <h3>Curso: {{nombre}}</h3>
+                                <a href="/asistencia">Subir Asistencia</a>
+                                <a href="URL">Subir Regularidad</a>
+                                <a href="/anuncios/add">Crear Anuncio</a>
+                            </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            {{#if asistenciaCurso}}
+            {{#each asistenciaCurso}}
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            Curso: {{curso}}
+                        </div>
+                        <div class="card-body">
+                            <div class="grid-container centrar-botones">
+                                <div class="">
+                                    <h3>Asistencia:</h3>
+                                    <br>
+                                    <h6>Presentes: {{presentes}}</h6>
+                                    <h6>Ausentes: {{ausentes}}</h6>
+                                    <h6>Regularidad: {{regularidad}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+                {{else}}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="grid-container centrar-botones">
+                            <div class="centrar-botones">
+                                <div class="">
+                                    <p>Parece que no perteneces a ningún curso 😅</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{/if}}
+            </div>
+    </section>
 </div>

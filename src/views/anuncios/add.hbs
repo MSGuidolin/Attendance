@@ -1,0 +1,48 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form action="/anuncios/add" method="POST">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" name="titulo" class="form-control" placeholder="Título" autofocus required>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de anuncio:</label>
+
+                        <select class="custom-select" id="inputtipo" name="tipo" required {{#unless tipo}} disabled
+                            {{/unless}}>
+
+                            <option hidden disabled selected value="">Seleccione un tipo de anuncio...</option>
+                            {{#each tipo}}
+                            <option value="{{id}}">{{tipo}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="curso">Curso:</label>
+
+                        <select class="custom-select" id="inputCurso" name="curso" required {{#unless cursos}} disabled
+                            {{/unless}}>
+
+                            <option hidden disabled selected value="">Seleccione un curso...</option>
+                            {{#each cursos}}
+                            <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripción"
+                        required></textarea>
+                </div>
+                <button class="btn btn-success btn-block">
+                    CREAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
