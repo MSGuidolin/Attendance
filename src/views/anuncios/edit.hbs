@@ -1,0 +1,45 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form action="/anuncios/edit/{{anuncio.id}}" method="POST">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" name="titulo" class="form-control" placeholder="Título"
+                        value="{{anuncio.titulo}}" autofocus required>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de anuncio:</label>
+
+                        <select class="custom-select" id="inputtipo" name="tipo" required {{#unless tipos}} disabled
+                            {{/unless}}>
+                            {{#each tipos}}
+                            <option value="{{id}}" {{#if selected}} selected {{/if}}>{{tipo}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="curso">Curso:</label>
+
+                        <select class="custom-select" id="inputCurso" name="curso" required {{#unless cursos}} disabled
+                            {{/unless}}>
+                            {{#each cursos}}
+                            <option value="{{id}}" {{#if selected}} selected {{/if}}>{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripción"
+                        value="{{anuncio.descripcion}}" required></textarea>
+                </div>
+                <button class="btn btn-success btn-block">
+                    GUARDAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

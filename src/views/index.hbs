@@ -28,8 +28,12 @@
                                     {{descripcion}}
                                 </div>
                                 <div class="modal-footer">
-                                    Profe {{profesor}}
+                                    Profe {{Profesor}}
                                 </div>
+                                {{#if permiso}}
+                                <a href="/anuncios/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
+                                <a href="/anuncios/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
