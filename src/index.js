@@ -54,6 +54,7 @@ app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/profile', require('./routes/profile'));
 app.use('/anuncios', require('./routes/anuncios'));
+app.use('/asistencia', require('./routes/asistencia'));
 
 //public
 app.use(express.static(path.join(__dirname, 'public')));

@@ -40,6 +40,14 @@
                                     <h3>PROFESOR</h3>
                                 </div>
                             </div>
+                            {{#each cursos}}
+                                <div class="row" style="padding-left:15px padding-right:5px">
+                                    <h3>Curso: {{nombre}}</h3>
+                                    <a href="/asistencia">Subir Asistencia</a>
+                                    <a href="URL">Subir Regularidad</a>
+                                    <a href="/anuncios/add">Crear Anuncio</a>
+                                </div>
+                            {{/each}}
                             
                         </div>
                     </div>
@@ -51,9 +59,7 @@
                     <div class="col-md-12">
                         <div class="box">
                             <div class="box-header">
-                                <div class="row" style="padding-left:15px padding-right:5px">
-                                    <h3>ALUMNO</h3>
-                                </div>
+                                <a href='/asistencia' ></a>
                             </div>
                             
                         </div>
