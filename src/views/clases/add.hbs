@@ -1,0 +1,31 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form action="/clases/add" method="POST">
+                <div class="form-group">
+                    <label for="curso">Curso:</label>
+                    {{curso.nombre}}
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Tema:</label>
+                    <input type="text" name="tema" class="form-control" placeholder="Tema" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="asistencia">Asistencia:</label>
+                    {{#each alumnos}}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="asistencia{{id}}">
+                        <label class="form-check-label" for="asistencia{{id}}">
+                            {{nombre}} {{apellido}}
+                        </label>
+                    </div>
+                    {{/each}}
+                </div>
+                <button class="btn btn-success btn-block">
+                    CREAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

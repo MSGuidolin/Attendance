@@ -221,7 +221,12 @@ INSERT INTO usuarios VALUES
     (1, 39767395, 'Marcos', 'Guidolin', 'España 650', '2616181199', '39767395', 'Alumno'),
     (2, 20307505, 'Martín', 'Gomez', 'Italia 650', '2616774852', '20307505', 'Profesor'),
     (3, 20397682, 'Adriana', 'Lopez', 'Corrientes 60', '26165148795', '20397682', 'Profesor'),
-    (4, 33666999, 'Daniel', 'Gomez', 'Italia 50', '2616447758', '33666999', 'Alumno');
+    (4, 33666999, 'Daniel', 'Gomez', 'Italia 50', '2616447758', '33666999', 'Alumno'),
+    (5, 29896989, 'Andres', 'Garcia', 'Italia 50', '2616447758', '29896989', 'Alumno'),
+    (6, 36252525, 'Carlos', 'Martinez', 'Italia 50', '2616447758', '36252525', 'Alumno'),
+    (7, 28282828, 'Daniela', 'Torres', 'Italia 50', '2616447758', '28282828', 'Alumno'),
+    (8, 40123456, 'Sofia', 'Pereyra', 'Italia 50', '2616447758', '40123456', 'Alumno'),
+    (9, 41124124, 'Andrea', 'Vergara', 'Italia 50', '2616447758', '41124124', 'Alumno');
 
 SELECT * from usuarios;
 
@@ -261,7 +266,7 @@ INSERT INTO clases (id, tema, curso, presentes, ausentes)
 VALUES
     (1, 'Reported Speech', 1, 1, 1);
 
-SELECT DATE_FORMAT(C.fecha,'%d/%m/%Y') AS fecha, C.tema, Q.nombre, C.unidadUsada,C.presentes, C.ausentes
+SELECT DATE_FORMAT(C.fecha,'%d/%m/%Y') AS fecha, C.tema, Q.nombre, C.presentes, C.ausentes
 FROM clases C
 JOIN cursos AS Q ON Q.id = C.curso;
 
