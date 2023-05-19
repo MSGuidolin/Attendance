@@ -1,4 +1,7 @@
 <div class="container p-4">
+    {{#if permiso}}
+    <a href="./anuncios/add" class="btn btn-success">Crear Anuncio</a>
+    {{/if}}
     {{#if anuncios}}
     <div class="row">
         {{#each anuncios}}
@@ -6,53 +9,26 @@
             <div class="card text-center">
                 <div class="card-body">
                     <h1>{{titulo}}</h1>
-                    <h5>{{timeago created_at}}</h5>
-
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        Detalles
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">{{titulo}} ({{curso}} , {{tipo}})
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    {{descripcion}}
-                                </div>
-                                <div class="modal-footer">
-                                    Profe {{Profesor}}
-                                </div>
-                                {{#if permiso}}
-                                <a href="/anuncios/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
-                                <a href="/anuncios/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a>
-                                {{/if}}
-                            </div>
-                        </div>
-                    </div>
-
-                    {{!-- <p class="createdat"> {{timeago created_at}} </p>
-                    <a href="/movies/see/{{id}}" class="btn btn-info" role="button">VER</a>
-                    <a href="/movies/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
-                    <a href="/movies/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a> --}}
+                    <p>{{timeago created_at}}</p>
+                    <a href="/anuncios/see/{{id}}" class="btn btn-info" role="button">DETALLES</a>
+                    {{#if permiso}}
+                    <a href="/anuncios/edit/{{id}}" class="btn btn-secondary" role="button">EDITAR</a>
+                    <a href="/anuncios/delete/{{id}}" class="btn btn-danger" role="button">ELIMINAR</a>
+                    {{/if}}
                 </div>
             </div>
         </div>
-        {{/each}}
     </div>
+</div>
+</div>
+{{/each}}
+</div>
 
-    {{else}}
-    <div class="col-md-4 mx-auto">
-        <div class="card card-body text-center">
-            <p> No hay anuncios para tí 😅</p>
-        </div>
+{{else}}
+<div class="col-md-4 mx-auto">
+    <div class="card card-body text-center">
+        <p> No hay anuncios para tí 😅</p>
     </div>
-    {{/if}}
+</div>
+{{/if}}
 </div>

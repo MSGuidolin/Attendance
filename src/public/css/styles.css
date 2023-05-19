@@ -60,3 +60,13 @@ body {
     background-color: rgb(235, 186, 97);
     
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: wheat;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px; 
+}

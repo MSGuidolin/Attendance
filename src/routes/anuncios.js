@@ -4,6 +4,12 @@ const router = express.Router();
 const pool = require('../database');
 const { authRole,isLoggedIn } = require('../lib/auth');
 
+router.get('/see/:id', isLoggedIn, async (req, res) => {
+    const permiso = await pool.query('SELECT rol FROM usuarios WHERE id = ? AND rol = "Profesor"' ,[req.user.id]);
+    const anuncios = await pool.query('SELECT anuncios.*, cursos.nombre AS curso, CONCAT(usuarios.nombre, " ",usuarios.apellido) profesor, tipoanuncios.tipo AS tipo FROM anuncios INNER JOIN usuarios ON usuarios.id = anuncios.profesor INNER JOIN cursos ON cursos.id = anuncios.curso INNER JOIN tipoAnuncios ON tipoAnuncios.id = anuncios.tipo INNER JOIN asistenciaCursos ON asistenciaCursos.curso = cursos.id WHERE anuncios.id = ?', [req.params.id]);
+    res.render('anuncios/see', { anuncio: anuncios[0], permiso });
+});
+
 router.get('/add', isLoggedIn, authRole('Profesor'),  async (req, res) => {
     const cursos = await pool.query('SELECT * FROM cursos WHERE profesor = ?', [req.user.id]);
     const tipo = await pool.query('SELECT * FROM tipoAnuncios');
@@ -40,7 +46,7 @@ router.get('/edit/:id', isLoggedIn, authRole('Profesor'), async (req, res) => {
         }
         return tipos;
     });
-    console.log(anuncios[0].descripcion);
+    console.log(anuncios[0]);
     res.render('anuncios/edit', { anuncio: anuncios[0], cursos: selectedCurso, selectedTipo, tipos })
 });
 

@@ -39,18 +39,6 @@ CREATE TABLE tipoCursos (
 DESCRIBE tipoCursos;
 
 
-CREATE TABLE libros (
-    id INT(11) NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(45) NOT NULL,
-    editorial VARCHAR(45) NOT NULL,
-    añoPublicacion INT(4) NOT NULL,
-    cantUnidades INT(11) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-DESCRIBE libros;
-
-
 CREATE TABLE roles (
     rol VARCHAR(45) NOT NULL,
     PRIMARY KEY(rol)
@@ -83,8 +71,6 @@ CREATE TABLE cursos (
     CONSTRAINT fk_tipoCurso FOREIGN KEY(tipo) REFERENCES tipoCursos(id),
     profesor INT(11) NOT NULL, 
     CONSTRAINT fk_profesor FOREIGN KEY(profesor) REFERENCES usuarios(id),
-    libro INT(11),
-    CONSTRAINT fk_libro FOREIGN KEY(libro) REFERENCES libros(id),
     PRIMARY KEY (id)
 );
 
@@ -142,8 +128,6 @@ CREATE TABLE clases (
     curso INT(11) NOT NULL,
     CONSTRAINT fk_curso_clase FOREIGN KEY(curso) REFERENCES cursos(id),
     unidadUsada INT(11),
-    unidadesLibro INT(11) NOT NULL,
-    CONSTRAINT fk_unidadesLibro FOREIGN KEY(unidadesLibro) REFERENCES libros(id),
     presentes INT(11),
     ausentes INT(11),
     PRIMARY KEY (id)
@@ -242,13 +226,6 @@ INSERT INTO usuarios VALUES
 SELECT * from usuarios;
 
 
-INSERT INTO libros VALUES
-    (1, 'Grammar For Use 4', 'Cambridge', 2020, 12),
-    (2, 'Grammar For Use 2', 'Cambridge', 2010, 10);
-
-SELECT * from libros;
-
-
 INSERT INTO cursos VALUES 
     (1, 'Adultos Avanzado', 203000, 2023, 'B1', 2, 2, 1),
     (2, 'Niños Intermedio', 180000, 2023, 'A1', 2, 3, 2);
@@ -280,14 +257,13 @@ FROM  usuarios U, cursos C, listaALumnos L
 WHERE U.id = L.alumno && C.id = L.curso;
 
 
-INSERT INTO clases (id, tema, curso, unidadUsada, unidadesLibro, presentes, ausentes)
+INSERT INTO clases (id, tema, curso, presentes, ausentes)
 VALUES
-    (1, 'Reported Speech', 1, 2, 1, 1, 1);
+    (1, 'Reported Speech', 1, 1, 1);
 
-SELECT DATE_FORMAT(C.fecha,'%d/%m/%Y') AS fecha, C.tema, Q.nombre, C.unidadUsada, L.cantUnidades, C.presentes, C.ausentes
+SELECT DATE_FORMAT(C.fecha,'%d/%m/%Y') AS fecha, C.tema, Q.nombre, C.unidadUsada,C.presentes, C.ausentes
 FROM clases C
-JOIN cursos AS Q ON Q.id = C.curso
-JOIN libros AS L ON L.id = Q.libro;
+JOIN cursos AS Q ON Q.id = C.curso;
 
 
 INSERT INTO cursosdias VALUES

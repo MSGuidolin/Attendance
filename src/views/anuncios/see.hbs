@@ -1,0 +1,35 @@
+<div class="container p-4">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <form action="/anuncios/see/{{anuncio.id}}" method="GET">
+                    <div class="form-group text-center">
+                        <h3>{{anuncio.titulo}}</h3>
+                    </div>
+                    <div class="form-group">
+                        Curso: {{anuncio.curso}}
+                    </div>
+                    <div class="form-group">
+                        Tipo: {{anuncio.tipo}}
+                    </div>
+                    <div class="form-group">
+                        {{anuncio.descripcion}}
+                    </div>
+                    <div class="form-group">
+                        Profesor: {{anuncio.profesor}}
+                    </div>
+                    <div class="form-group">
+                        Publicado: {{anuncio.created_at}}
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                        <a href="/" class="btn btn-primary" role="button">VOLVER</a>
+                        {{#if permiso}}
+                        <a href="/anuncios/edit/{{anuncio.id}}" class="btn btn-secondary" role="button">EDITAR</a>
+                        <a href="/anuncios/delete/{{anuncio.id}}" class="btn btn-danger" role="button">ELIMINAR</a>
+                        {{/if}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
